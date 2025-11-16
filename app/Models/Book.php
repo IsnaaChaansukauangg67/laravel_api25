@@ -19,7 +19,7 @@ protected $casts = [
 
 ];
 
-public function Author (): BelongsTo
+public function author (): BelongsTo
 {
     return $this->belongsTo(Author::class);
 }

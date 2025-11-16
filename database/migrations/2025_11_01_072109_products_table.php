@@ -9,16 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up(): void 
     {
-      schema::create('books', function (Blueprint $table) {
+       Schema::create('products', function (Blueprint $table) {
         $table->id();
-        $table->string('title');
-        $table->foreignId('author_id')->constrained('authors');
-        $table->integer('published_year')->default(2000);
-        $table->string('genre')->nullable();
+        $table->string('name');
+        $table->string('description')->nullable();
+        $table->foreignId('category_id')->constrained('product_categories')->onDelete('restrict');
         $table->timestamps();
-      }); 
+       });   //
     }
 
     /**
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-      Schema::dropIfExists('books'); //
+        Schema::dropIfExists('products');   //
     }
 };

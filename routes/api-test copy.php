@@ -1,22 +1,19 @@
 <?php
 
-use App\Http\Controllers\Api\ProductCategoryController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\VendorController;
-use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function(){
-    Route::resource('product-categories',ProductCategoryController::class);
 
+    Route::resource('products',ProductController::class);
     
 
     Route::get('/books', [BookController::class, 'index']);
     Route::get('/books/{id}',[BookController::class, 'show']);
 
     Route::resource('vendor', VendorController::class);
-    Route::resource('products',ProductController::class);
 
     Route::get('/halo', function () {
     return 'Welcome to my API';
